@@ -20,7 +20,7 @@ sudo apt install nodejs -y
 sudo npm install pm2 -g
 
 # Set the DB_HOST environment variable
-export DB_HOST=mongodb://20.108.20.81:27017/posts
+export DB_HOST=mongodb://20.68.23.200:27017/posts
 
 # Copy the app folder to the VM
 git clone https://github.com/HarryPaterson/tech241_sparta_app.git sparta-app
