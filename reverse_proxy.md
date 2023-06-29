@@ -50,3 +50,50 @@ Diagram:
 
 
 ### Solution
+
+To set up a reverse proxy for the app using Nginx, you can follow these additional steps after the ones you provided in the script:
+
+1. Create an Nginx configuration file for your app:
+   ```
+   sudo nano /etc/nginx/sites-available/myapp.conf
+   ```
+   This will open a text editor. Add the following configuration to the file:
+   ```
+   server {
+       listen 80;
+       server_name 4.234.113.95;
+
+       location / {
+           proxy_pass http://localhost:3000;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_cache_bypass $http_upgrade;
+       }
+
+       location /posts {
+           proxy_pass http://localhost:3000/posts;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_cache_bypass $http_upgrade;
+       }
+   }
+   ```
+
+2. Enable the site by creating a symbolic link in the `sites-enabled` directory:
+   ```
+   sudo ln -s /etc/nginx/sites-available/myapp.conf /etc/nginx/sites-enabled/
+   ```
+
+3. Test the Nginx configuration for any syntax errors:
+   ```
+   sudo nginx -t
+   ```
+
+4. Restart Nginx to apply the changes:
+   ```
+   sudo systemctl restart nginx
+   ```

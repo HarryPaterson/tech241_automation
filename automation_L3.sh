@@ -7,9 +7,14 @@ sudo apt upgrade -y
 # Install nginx
 sudo apt install nginx -y
 
-# Restart and enable Nginx
-sudo systemctl restart nginx
+#enable Nginx
 sudo systemctl enable nginx
+
+# start nginx
+sudo systemctl start nginx
+
+# restart nginx
+sudo systemctl restart nginx
 
 # Install Node.js (version 12.x)
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
