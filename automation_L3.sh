@@ -13,6 +13,9 @@ sudo systemctl enable nginx
 # start nginx
 sudo systemctl start nginx
 
+#add proxy command
+sudo sed -i 's|try_files $uri $uri/ =404;|proxy_pass http://localhost:3000;|' /etc/nginx/sites-available/default
+
 # restart nginx
 sudo systemctl restart nginx
 

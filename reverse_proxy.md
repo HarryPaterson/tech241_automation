@@ -51,11 +51,9 @@ Diagram:
 
 ### Solution
 
-To set up a reverse proxy for the app using Nginx, you can follow these additional steps after the ones you provided in the script:
-
 1. Create an Nginx configuration file for your app:
    ```
-   sudo nano /etc/nginx/sites-available/myapp.conf
+   sudo nano /etc/nginx/sites-available/
    ```
    This will open a text editor. Add the following configuration to the file:
    ```
